@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/CashLib.dir/source/main.cpp.o -o CashLib  source/RLogSU/libRLogSU.a 
