@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DDEBUG_MODE -DMODULE_NAME=\"RLogSU\"
 
-CXX_INCLUDES = -I/home/frukt71/Github/CashLib/source/RLogSU/include
+CXX_INCLUDES = -I/home/frukt71/Github/CashTest/source/RLogSU/include
 
 CXX_FLAGS = -std=c++20
 

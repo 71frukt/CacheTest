@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/frukt71/Github/CashLib
+CMAKE_SOURCE_DIR = /home/frukt71/Github/CashTest
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/frukt71/Github/CashLib/build
+CMAKE_BINARY_DIR = /home/frukt71/Github/CashTest/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/frukt71/Github/CashLib/build/CMakeFiles /home/frukt71/Github/CashLib/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/frukt71/Github/CashTest/build/CMakeFiles /home/frukt71/Github/CashTest/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/frukt71/Github/CashLib/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/frukt71/Github/CashTest/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -117,17 +117,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named CashLib
+# Target rules for targets named CashTest
 
 # Build rule for target.
-CashLib: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CashLib
-.PHONY : CashLib
+CashTest: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CashTest
+.PHONY : CashTest
 
 # fast build rule for target.
-CashLib/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CashLib.dir/build.make CMakeFiles/CashLib.dir/build
-.PHONY : CashLib/fast
+CashTest/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CashTest.dir/build.make CMakeFiles/CashTest.dir/build
+.PHONY : CashTest/fast
 
 #=============================================================================
 # Target rules for targets named run
@@ -141,6 +141,19 @@ run: cmake_check_build_system
 run/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/build
 .PHONY : run/fast
+
+#=============================================================================
+# Target rules for targets named rebuild
+
+# Build rule for target.
+rebuild: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 rebuild
+.PHONY : rebuild
+
+# fast build rule for target.
+rebuild/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebuild.dir/build.make CMakeFiles/rebuild.dir/build
+.PHONY : rebuild/fast
 
 #=============================================================================
 # Target rules for targets named RLogSU
@@ -160,7 +173,7 @@ source/main.o: source/main.cpp.o
 
 # target to build an object file
 source/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CashLib.dir/build.make CMakeFiles/CashLib.dir/source/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CashTest.dir/build.make CMakeFiles/CashTest.dir/source/main.cpp.o
 .PHONY : source/main.cpp.o
 
 source/main.i: source/main.cpp.i
@@ -168,7 +181,7 @@ source/main.i: source/main.cpp.i
 
 # target to preprocess a source file
 source/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CashLib.dir/build.make CMakeFiles/CashLib.dir/source/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CashTest.dir/build.make CMakeFiles/CashTest.dir/source/main.cpp.i
 .PHONY : source/main.cpp.i
 
 source/main.s: source/main.cpp.s
@@ -176,7 +189,7 @@ source/main.s: source/main.cpp.s
 
 # target to generate assembly for a file
 source/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CashLib.dir/build.make CMakeFiles/CashLib.dir/source/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CashTest.dir/build.make CMakeFiles/CashTest.dir/source/main.cpp.s
 .PHONY : source/main.cpp.s
 
 # Help Target
@@ -187,8 +200,9 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... rebuild"
 	@echo "... run"
-	@echo "... CashLib"
+	@echo "... CashTest"
 	@echo "... RLogSU"
 	@echo "... source/main.o"
 	@echo "... source/main.i"

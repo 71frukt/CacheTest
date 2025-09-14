@@ -54,28 +54,47 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/frukt71/Github/CashLib
+CMAKE_SOURCE_DIR = /home/frukt71/Github/CashTest
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/frukt71/Github/CashLib/build
+CMAKE_BINARY_DIR = /home/frukt71/Github/CashTest/build
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/CashLib.dir/all
+all: CMakeFiles/CashTest.dir/all
 all: source/RLogSU/all
+all: source/CashLib/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
 preinstall: source/RLogSU/preinstall
+preinstall: source/CashLib/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/CashLib.dir/clean
+clean: CMakeFiles/CashTest.dir/clean
 clean: CMakeFiles/run.dir/clean
+clean: CMakeFiles/rebuild.dir/clean
 clean: source/RLogSU/clean
+clean: source/CashLib/clean
 .PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory source/CashLib
+
+# Recursive "all" directory target.
+source/CashLib/all:
+.PHONY : source/CashLib/all
+
+# Recursive "preinstall" directory target.
+source/CashLib/preinstall:
+.PHONY : source/CashLib/preinstall
+
+# Recursive "clean" directory target.
+source/CashLib/clean:
+.PHONY : source/CashLib/clean
 
 #=============================================================================
 # Directory level rules for directory source/RLogSU
@@ -93,30 +112,30 @@ source/RLogSU/clean: source/RLogSU/CMakeFiles/RLogSU.dir/clean
 .PHONY : source/RLogSU/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/CashLib.dir
+# Target rules for target CMakeFiles/CashTest.dir
 
 # All Build rule for target.
-CMakeFiles/CashLib.dir/all: source/RLogSU/CMakeFiles/RLogSU.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CashLib.dir/build.make CMakeFiles/CashLib.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CashLib.dir/build.make CMakeFiles/CashLib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/frukt71/Github/CashLib/build/CMakeFiles --progress-num=1,2 "Built target CashLib"
-.PHONY : CMakeFiles/CashLib.dir/all
+CMakeFiles/CashTest.dir/all: source/RLogSU/CMakeFiles/RLogSU.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CashTest.dir/build.make CMakeFiles/CashTest.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CashTest.dir/build.make CMakeFiles/CashTest.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/frukt71/Github/CashTest/build/CMakeFiles --progress-num=1,2 "Built target CashTest"
+.PHONY : CMakeFiles/CashTest.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/CashLib.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/frukt71/Github/CashLib/build/CMakeFiles 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/CashLib.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/frukt71/Github/CashLib/build/CMakeFiles 0
-.PHONY : CMakeFiles/CashLib.dir/rule
+CMakeFiles/CashTest.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/frukt71/Github/CashTest/build/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/CashTest.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/frukt71/Github/CashTest/build/CMakeFiles 0
+.PHONY : CMakeFiles/CashTest.dir/rule
 
 # Convenience name for target.
-CashLib: CMakeFiles/CashLib.dir/rule
-.PHONY : CashLib
+CashTest: CMakeFiles/CashTest.dir/rule
+.PHONY : CashTest
 
 # clean rule for target.
-CMakeFiles/CashLib.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CashLib.dir/build.make CMakeFiles/CashLib.dir/clean
-.PHONY : CMakeFiles/CashLib.dir/clean
+CMakeFiles/CashTest.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CashTest.dir/build.make CMakeFiles/CashTest.dir/clean
+.PHONY : CMakeFiles/CashTest.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/run.dir
@@ -125,14 +144,14 @@ CMakeFiles/CashLib.dir/clean:
 CMakeFiles/run.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/frukt71/Github/CashLib/build/CMakeFiles --progress-num= "Built target run"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/frukt71/Github/CashTest/build/CMakeFiles --progress-num= "Built target run"
 .PHONY : CMakeFiles/run.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/run.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/frukt71/Github/CashLib/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/frukt71/Github/CashTest/build/CMakeFiles 0
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/run.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/frukt71/Github/CashLib/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/frukt71/Github/CashTest/build/CMakeFiles 0
 .PHONY : CMakeFiles/run.dir/rule
 
 # Convenience name for target.
@@ -145,20 +164,46 @@ CMakeFiles/run.dir/clean:
 .PHONY : CMakeFiles/run.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/rebuild.dir
+
+# All Build rule for target.
+CMakeFiles/rebuild.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebuild.dir/build.make CMakeFiles/rebuild.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebuild.dir/build.make CMakeFiles/rebuild.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/frukt71/Github/CashTest/build/CMakeFiles --progress-num=5 "Built target rebuild"
+.PHONY : CMakeFiles/rebuild.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/rebuild.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/frukt71/Github/CashTest/build/CMakeFiles 1
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/rebuild.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/frukt71/Github/CashTest/build/CMakeFiles 0
+.PHONY : CMakeFiles/rebuild.dir/rule
+
+# Convenience name for target.
+rebuild: CMakeFiles/rebuild.dir/rule
+.PHONY : rebuild
+
+# clean rule for target.
+CMakeFiles/rebuild.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rebuild.dir/build.make CMakeFiles/rebuild.dir/clean
+.PHONY : CMakeFiles/rebuild.dir/clean
+
+#=============================================================================
 # Target rules for target source/RLogSU/CMakeFiles/RLogSU.dir
 
 # All Build rule for target.
 source/RLogSU/CMakeFiles/RLogSU.dir/all:
 	$(MAKE) $(MAKESILENT) -f source/RLogSU/CMakeFiles/RLogSU.dir/build.make source/RLogSU/CMakeFiles/RLogSU.dir/depend
 	$(MAKE) $(MAKESILENT) -f source/RLogSU/CMakeFiles/RLogSU.dir/build.make source/RLogSU/CMakeFiles/RLogSU.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/frukt71/Github/CashLib/build/CMakeFiles --progress-num=3,4 "Built target RLogSU"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/frukt71/Github/CashTest/build/CMakeFiles --progress-num=3,4 "Built target RLogSU"
 .PHONY : source/RLogSU/CMakeFiles/RLogSU.dir/all
 
 # Build rule for subdir invocation for target.
 source/RLogSU/CMakeFiles/RLogSU.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/frukt71/Github/CashLib/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/frukt71/Github/CashTest/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 source/RLogSU/CMakeFiles/RLogSU.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/frukt71/Github/CashLib/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/frukt71/Github/CashTest/build/CMakeFiles 0
 .PHONY : source/RLogSU/CMakeFiles/RLogSU.dir/rule
 
 # Convenience name for target.

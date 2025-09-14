@@ -1,5 +1,5 @@
 source/RLogSU/CMakeFiles/RLogSU.dir/src/logger.cpp.o: \
- /home/frukt71/Github/CashLib/source/RLogSU/src/logger.cpp \
+ /home/frukt71/Github/CashTest/source/RLogSU/src/logger.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/13/cstdio \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -182,10 +182,10 @@ source/RLogSU/CMakeFiles/RLogSU.dir/src/logger.cpp.o: \
  /usr/include/c++/13/bits/align.h \
  /usr/include/c++/13/bits/stl_uninitialized.h \
  /usr/include/c++/13/bits/fs_dir.h /usr/include/c++/13/bits/fs_ops.h \
- /home/frukt71/Github/CashLib/source/RLogSU/include/RLogSU/logger.hpp \
+ /home/frukt71/Github/CashTest/source/RLogSU/include/RLogSU/logger_appearance.hpp \
+ /home/frukt71/Github/CashTest/source/RLogSU/include/RLogSU/logger.hpp \
  /usr/include/c++/13/format /usr/include/c++/13/array \
  /usr/include/c++/13/charconv /usr/include/c++/13/optional \
  /usr/include/c++/13/bits/enable_special_members.h \
  /usr/include/c++/13/span /usr/include/c++/13/variant \
- /usr/include/c++/13/bits/ranges_algobase.h \
- /home/frukt71/Github/CashLib/source/RLogSU/include/RLogSU/logger_appearance.hpp
+ /usr/include/c++/13/bits/ranges_algobase.h

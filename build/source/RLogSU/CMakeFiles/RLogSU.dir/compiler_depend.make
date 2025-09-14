@@ -236,6 +236,7 @@ source/RLogSU/CMakeFiles/RLogSU.dir/src/logger.cpp.o: ../source/RLogSU/src/logge
   /usr/include/c++/13/bits/stl_uninitialized.h \
   /usr/include/c++/13/bits/fs_dir.h \
   /usr/include/c++/13/bits/fs_ops.h \
+  ../source/RLogSU/include/RLogSU/logger_appearance.hpp \
   ../source/RLogSU/include/RLogSU/logger.hpp \
   /usr/include/c++/13/format \
   /usr/include/c++/13/array \
@@ -244,11 +245,8 @@ source/RLogSU/CMakeFiles/RLogSU.dir/src/logger.cpp.o: ../source/RLogSU/src/logge
   /usr/include/c++/13/bits/enable_special_members.h \
   /usr/include/c++/13/span \
   /usr/include/c++/13/variant \
-  /usr/include/c++/13/bits/ranges_algobase.h \
-  ../source/RLogSU/include/RLogSU/logger_appearance.hpp
+  /usr/include/c++/13/bits/ranges_algobase.h
 
-
-../source/RLogSU/include/RLogSU/logger_appearance.hpp:
 
 /usr/include/c++/13/bits/ranges_algobase.h:
 
@@ -259,6 +257,8 @@ source/RLogSU/CMakeFiles/RLogSU.dir/src/logger.cpp.o: ../source/RLogSU/src/logge
 /usr/include/c++/13/bits/enable_special_members.h:
 
 /usr/include/c++/13/array:
+
+../source/RLogSU/include/RLogSU/logger_appearance.hpp:
 
 /usr/include/c++/13/bits/shared_ptr_base.h:
 

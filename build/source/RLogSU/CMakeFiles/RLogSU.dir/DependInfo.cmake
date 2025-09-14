@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/frukt71/Github/CashLib/source/RLogSU/src/logger.cpp" "source/RLogSU/CMakeFiles/RLogSU.dir/src/logger.cpp.o" "gcc" "source/RLogSU/CMakeFiles/RLogSU.dir/src/logger.cpp.o.d"
+  "/home/frukt71/Github/CashTest/source/RLogSU/src/logger.cpp" "source/RLogSU/CMakeFiles/RLogSU.dir/src/logger.cpp.o" "gcc" "source/RLogSU/CMakeFiles/RLogSU.dir/src/logger.cpp.o.d"
   )
 
 # Targets to which this target links.

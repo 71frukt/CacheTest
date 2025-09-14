@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/frukt71/Github/CashLib
+CMAKE_SOURCE_DIR = /home/frukt71/Github/CashTest
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/frukt71/Github/CashLib/build
+CMAKE_BINARY_DIR = /home/frukt71/Github/CashTest/build
 
 # Utility rule file for run.
 
@@ -67,7 +67,7 @@ include CMakeFiles/run.dir/compiler_depend.make
 include CMakeFiles/run.dir/progress.make
 
 CMakeFiles/run:
-	cd /home/frukt71/Github/CashLib && /home/frukt71/Github/CashLib/build/CashLib
+	cd /home/frukt71/Github/CashTest && /home/frukt71/Github/CashTest/build/CashTest
 
 run: CMakeFiles/run
 run: CMakeFiles/run.dir/build.make
@@ -82,6 +82,6 @@ CMakeFiles/run.dir/clean:
 .PHONY : CMakeFiles/run.dir/clean
 
 CMakeFiles/run.dir/depend:
-	cd /home/frukt71/Github/CashLib/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/frukt71/Github/CashLib /home/frukt71/Github/CashLib /home/frukt71/Github/CashLib/build /home/frukt71/Github/CashLib/build /home/frukt71/Github/CashLib/build/CMakeFiles/run.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/frukt71/Github/CashTest/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/frukt71/Github/CashTest /home/frukt71/Github/CashTest /home/frukt71/Github/CashTest/build /home/frukt71/Github/CashTest/build /home/frukt71/Github/CashTest/build/CMakeFiles/run.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/run.dir/depend
 

@@ -1,7 +1,10 @@
-/home/frukt71/Github/CashLib/build/CMakeFiles/CashLib.dir
-/home/frukt71/Github/CashLib/build/CMakeFiles/run.dir
-/home/frukt71/Github/CashLib/build/CMakeFiles/edit_cache.dir
-/home/frukt71/Github/CashLib/build/CMakeFiles/rebuild_cache.dir
-/home/frukt71/Github/CashLib/build/source/RLogSU/CMakeFiles/RLogSU.dir
-/home/frukt71/Github/CashLib/build/source/RLogSU/CMakeFiles/edit_cache.dir
-/home/frukt71/Github/CashLib/build/source/RLogSU/CMakeFiles/rebuild_cache.dir
+/home/frukt71/Github/CashTest/build/CMakeFiles/CashTest.dir
+/home/frukt71/Github/CashTest/build/CMakeFiles/run.dir
+/home/frukt71/Github/CashTest/build/CMakeFiles/rebuild.dir
+/home/frukt71/Github/CashTest/build/CMakeFiles/edit_cache.dir
+/home/frukt71/Github/CashTest/build/CMakeFiles/rebuild_cache.dir
+/home/frukt71/Github/CashTest/build/source/RLogSU/CMakeFiles/RLogSU.dir
+/home/frukt71/Github/CashTest/build/source/RLogSU/CMakeFiles/edit_cache.dir
+/home/frukt71/Github/CashTest/build/source/RLogSU/CMakeFiles/rebuild_cache.dir
+/home/frukt71/Github/CashTest/build/source/CashLib/CMakeFiles/edit_cache.dir
+/home/frukt71/Github/CashTest/build/source/CashLib/CMakeFiles/rebuild_cache.dir

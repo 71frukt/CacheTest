@@ -1,4 +1,4 @@
-# Install script for directory: /home/frukt71/Github/CashLib
+# Install script for directory: /home/frukt71/Github/CashTest
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,7 +44,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/frukt71/Github/CashLib/build/source/RLogSU/cmake_install.cmake")
+  include("/home/frukt71/Github/CashTest/build/source/RLogSU/cmake_install.cmake")
+  include("/home/frukt71/Github/CashTest/build/source/CashLib/cmake_install.cmake")
 
 endif()
 
@@ -56,5 +57,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/frukt71/Github/CashLib/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/frukt71/Github/CashTest/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -1,4 +1,4 @@
-# Install script for directory: /home/frukt71/Github/CashLib/source/RLogSU
+# Install script for directory: /home/frukt71/Github/CashTest/source/RLogSU
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

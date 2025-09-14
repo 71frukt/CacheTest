@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/frukt71/Github/CashLib
+CMAKE_SOURCE_DIR = /home/frukt71/Github/CashTest
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/frukt71/Github/CashLib/build
+CMAKE_BINARY_DIR = /home/frukt71/Github/CashTest/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/frukt71/Github/CashLib/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/frukt71/Github/CashLib/build/CMakeFiles /home/frukt71/Github/CashLib/build/source/RLogSU//CMakeFiles/progress.marks
-	cd /home/frukt71/Github/CashLib/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 source/RLogSU/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/frukt71/Github/CashLib/build/CMakeFiles 0
+	cd /home/frukt71/Github/CashTest/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/frukt71/Github/CashTest/build/CMakeFiles /home/frukt71/Github/CashTest/build/source/RLogSU//CMakeFiles/progress.marks
+	cd /home/frukt71/Github/CashTest/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 source/RLogSU/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/frukt71/Github/CashTest/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/frukt71/Github/CashLib/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 source/RLogSU/clean
+	cd /home/frukt71/Github/CashTest/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 source/RLogSU/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,22 +103,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/frukt71/Github/CashLib/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 source/RLogSU/preinstall
+	cd /home/frukt71/Github/CashTest/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 source/RLogSU/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/frukt71/Github/CashLib/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 source/RLogSU/preinstall
+	cd /home/frukt71/Github/CashTest/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 source/RLogSU/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/frukt71/Github/CashLib/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/frukt71/Github/CashTest/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 source/RLogSU/CMakeFiles/RLogSU.dir/rule:
-	cd /home/frukt71/Github/CashLib/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 source/RLogSU/CMakeFiles/RLogSU.dir/rule
+	cd /home/frukt71/Github/CashTest/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 source/RLogSU/CMakeFiles/RLogSU.dir/rule
 .PHONY : source/RLogSU/CMakeFiles/RLogSU.dir/rule
 
 # Convenience name for target.
@@ -127,7 +127,7 @@ RLogSU: source/RLogSU/CMakeFiles/RLogSU.dir/rule
 
 # fast build rule for target.
 RLogSU/fast:
-	cd /home/frukt71/Github/CashLib/build && $(MAKE) $(MAKESILENT) -f source/RLogSU/CMakeFiles/RLogSU.dir/build.make source/RLogSU/CMakeFiles/RLogSU.dir/build
+	cd /home/frukt71/Github/CashTest/build && $(MAKE) $(MAKESILENT) -f source/RLogSU/CMakeFiles/RLogSU.dir/build.make source/RLogSU/CMakeFiles/RLogSU.dir/build
 .PHONY : RLogSU/fast
 
 src/logger.o: src/logger.cpp.o
@@ -135,7 +135,7 @@ src/logger.o: src/logger.cpp.o
 
 # target to build an object file
 src/logger.cpp.o:
-	cd /home/frukt71/Github/CashLib/build && $(MAKE) $(MAKESILENT) -f source/RLogSU/CMakeFiles/RLogSU.dir/build.make source/RLogSU/CMakeFiles/RLogSU.dir/src/logger.cpp.o
+	cd /home/frukt71/Github/CashTest/build && $(MAKE) $(MAKESILENT) -f source/RLogSU/CMakeFiles/RLogSU.dir/build.make source/RLogSU/CMakeFiles/RLogSU.dir/src/logger.cpp.o
 .PHONY : src/logger.cpp.o
 
 src/logger.i: src/logger.cpp.i
@@ -143,7 +143,7 @@ src/logger.i: src/logger.cpp.i
 
 # target to preprocess a source file
 src/logger.cpp.i:
-	cd /home/frukt71/Github/CashLib/build && $(MAKE) $(MAKESILENT) -f source/RLogSU/CMakeFiles/RLogSU.dir/build.make source/RLogSU/CMakeFiles/RLogSU.dir/src/logger.cpp.i
+	cd /home/frukt71/Github/CashTest/build && $(MAKE) $(MAKESILENT) -f source/RLogSU/CMakeFiles/RLogSU.dir/build.make source/RLogSU/CMakeFiles/RLogSU.dir/src/logger.cpp.i
 .PHONY : src/logger.cpp.i
 
 src/logger.s: src/logger.cpp.s
@@ -151,7 +151,7 @@ src/logger.s: src/logger.cpp.s
 
 # target to generate assembly for a file
 src/logger.cpp.s:
-	cd /home/frukt71/Github/CashLib/build && $(MAKE) $(MAKESILENT) -f source/RLogSU/CMakeFiles/RLogSU.dir/build.make source/RLogSU/CMakeFiles/RLogSU.dir/src/logger.cpp.s
+	cd /home/frukt71/Github/CashTest/build && $(MAKE) $(MAKESILENT) -f source/RLogSU/CMakeFiles/RLogSU.dir/build.make source/RLogSU/CMakeFiles/RLogSU.dir/src/logger.cpp.s
 .PHONY : src/logger.cpp.s
 
 # Help Target
@@ -177,6 +177,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/frukt71/Github/CashLib/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/frukt71/Github/CashTest/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
