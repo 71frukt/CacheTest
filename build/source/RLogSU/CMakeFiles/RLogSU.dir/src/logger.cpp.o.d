@@ -188,4 +188,5 @@ source/RLogSU/CMakeFiles/RLogSU.dir/src/logger.cpp.o: \
  /usr/include/c++/13/charconv /usr/include/c++/13/optional \
  /usr/include/c++/13/bits/enable_special_members.h \
  /usr/include/c++/13/span /usr/include/c++/13/variant \
- /usr/include/c++/13/bits/ranges_algobase.h
+ /usr/include/c++/13/bits/ranges_algobase.h \
+ /home/frukt71/Github/CashTest/source/RLogSU/include/RLogSU/error_handler.hpp

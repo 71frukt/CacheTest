@@ -100,6 +100,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/check.dir/DependInfo.cmake"
   "CMakeFiles/CashTest.dir/DependInfo.cmake"
   "CMakeFiles/run.dir/DependInfo.cmake"
   "CMakeFiles/rebuild.dir/DependInfo.cmake"

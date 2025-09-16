@@ -202,7 +202,7 @@ CashTest_IS_TOP_LEVEL:STATIC=ON
 CashTest_SOURCE_DIR:STATIC=/home/frukt71/Github/CashTest
 
 //Enable debug mode
-DEBUG_MODE:BOOL=ON
+DEBUG_MODE:BOOL=OFF
 
 //Value Computed by CMake
 RLogSU_BINARY_DIR:STATIC=/home/frukt71/Github/CashTest/build/source/RLogSU
