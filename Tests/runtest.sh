@@ -7,7 +7,6 @@ expected_file="${TEST_FILE}.expected"
 expected=$(cat "${expected_file}")
 
 if [ "$result" = "$expected" ]; then
-    echo "PASS: ${TEST_FILE}"
     exit 0
 else
     echo "FAIL:     ${TEST_FILE}"

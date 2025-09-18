@@ -4,9 +4,9 @@ project(CashTest LANGUAGES CXX)
 
 enable_testing()
 add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND}
-     --force-new-ctest-process
-     --verbose
-      --output-on-failure
+    --force-new-ctest-process
+    --verbose
+    --output-on-failure
 )
 
 
@@ -21,53 +21,137 @@ option(DEBUG_MODE "Enable debug mode" OFF)
 set(LOG_DIR ${CMAKE_CURRENT_SOURCE_DIR}/log)
 
 add_subdirectory(source/RLogSU)
-add_subdirectory(source/CashLib)
+add_subdirectory(source/Cash2QLib)
+add_subdirectory(source/CashIdeal)
 
 
-add_executable(${PROJECT_NAME}
-    source/main.cpp
+#================ $$$Cash2Q$$$ =============================================================================
+
+add_executable(cash_2q_test
+    source/cash_2q_tester.cpp
 )
 
-target_link_libraries(${PROJECT_NAME} PRIVATE
+target_link_libraries(cash_2q_test PRIVATE
     RLogSU
-    CashLib
+    Cash2QLib
 )
 
-add_custom_target(run
-    COMMAND ${CMAKE_BINARY_DIR}/${PROJECT_NAME}
+add_custom_target(run_2q
+    COMMAND ${CMAKE_BINARY_DIR}/cash_2q_test
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 )
 
-add_custom_target(rebuild
+add_custom_target(rebuild_2q
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
     COMMAND ${CMAKE_COMMAND} -E rm -rf ${CMAKE_BINARY_DIR}/*
-    COMMAND ${CMAKE_COMMAND} -E rm -rf ${CMAKE_BINARY_DIR}/.[^.]*  # Удаляет скрытые файлы
+    COMMAND ${CMAKE_COMMAND} -E rm -rf ${CMAKE_BINARY_DIR}/.[^.]*
     COMMAND ${CMAKE_COMMAND} -S ${CMAKE_SOURCE_DIR} -B ${CMAKE_BINARY_DIR}
     COMMAND ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR}
-    COMMENT "${PROJECT_NAME}: Full rebuild"
+    COMMENT "cash_2q_test: Full rebuild"
     USES_TERMINAL
 )
 
 
-SET(TESTS ${CMAKE_SOURCE_DIR}/Tests)
-file(GLOB testfiles "Tests/*.dat")
+target_compile_definitions(cash_2q_test PRIVATE MODULE_NAME="cash_2q_test")
 
-foreach(file ${testfiles})
+if(DEBUG_MODE)
+    target_compile_definitions(cash_2q_test PRIVATE DEBUG_MODE)
+    message(STATUS "cash_2q_test: DEBUG_MODE ENABLED")
+else()
+    message(STATUS "cash_2q_test: DEBUG_MODE DISABLED")
+endif()
+
+#================ / Cash2Q =============================================================================
+
+
+
+#================ $$$CashIdeal$$$ =============================================================================
+
+add_executable(cash_ideal_test
+    source/cash_ideal_tester.cpp
+)
+
+target_link_libraries(cash_ideal_test PRIVATE
+    RLogSU
+    Cash2QLib
+    CashIdeal
+)
+
+add_custom_target(run_ideal
+    COMMAND ${CMAKE_BINARY_DIR}/cash_ideal_test
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+)
+
+add_custom_target(rebuild_ideal
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    COMMAND ${CMAKE_COMMAND} -E rm -rf ${CMAKE_BINARY_DIR}/*
+    COMMAND ${CMAKE_COMMAND} -E rm -rf ${CMAKE_BINARY_DIR}/.[^.]*
+    COMMAND ${CMAKE_COMMAND} -S ${CMAKE_SOURCE_DIR} -B ${CMAKE_BINARY_DIR}
+    COMMAND ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR}
+    COMMENT "cash_ideal_test: Full rebuild"
+    USES_TERMINAL
+)
+
+
+target_compile_definitions(cash_ideal_test PRIVATE MODULE_NAME="cash_ideal_test")
+
+if(DEBUG_MODE)
+    target_compile_definitions(cash_ideal_test PRIVATE DEBUG_MODE)
+    message(STATUS "cash_ideal_test: DEBUG_MODE ENABLED")
+else()
+    message(STATUS "cash_ideal_test: DEBUG_MODE DISABLED")
+endif()
+
+#================ / CashIdeal =============================================================================
+
+
+
+
+
+
+#================== TESTS =================================================================================
+
+set(TEST_DIR    ${CMAKE_SOURCE_DIR}/Tests)
+set(TEST_RUNNER ${TEST_DIR}/runtest.sh)
+
+
+#Cash2Q
+
+file(GLOB cash2q_test_files "${TEST_DIR}/Cash2Q/*.dat")
+
+foreach(test_file ${cash2q_test_files})
+    get_filename_component(test_name ${test_file} NAME)
+
     add_test(
-        NAME ${file}
-        COMMAND bash -c "${CMAKE_SOURCE_DIR}/Tests/runtest.sh ${file} ./${PROJECT_NAME}"
+        NAME Cash2Q_${test_name}
+        COMMAND ${TEST_RUNNER} ${test_file} $<TARGET_FILE:cash_2q_test>
         WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-        )
-    set_tests_properties(${file} PROPERTIES DEPENDS ${PROJECT_NAME})
+    )
+
+    set_tests_properties(Cash2Q_${test_name} PROPERTIES 
+        DEPENDS cash_2q_test
+        LABELS "Cash2Q"
+    )
 endforeach()
 
 
+# CashIdeal
 
-target_compile_definitions(${PROJECT_NAME} PRIVATE MODULE_NAME="${PROJECT_NAME}")
+file(GLOB cash_ideal_test_files "${TEST_DIR}/CashIdeal/*.dat")
+foreach(test_file ${cash_ideal_test_files})
+    get_filename_component(test_name ${test_file} NAME)
+    
+    add_test(
+        NAME CashIdeal_${test_name}
+        COMMAND ${TEST_RUNNER} ${test_file} $<TARGET_FILE:cash_ideal_test>
+        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    )
+    
+    set_tests_properties(CashIdeal_${test_name} PROPERTIES 
+        DEPENDS cash_ideal_test
+        LABELS "CashIdeal"
+    )
+endforeach()
 
-if(DEBUG_MODE)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE DEBUG_MODE)
-    message(STATUS "${PROJECT_NAME}: DEBUG_MODE ENABLED")
-else()
-    message(STATUS "${PROJECT_NAME}: DEBUG_MODE DISABLED")
-endif()
+
+#================ / TESTS =================================================================================
