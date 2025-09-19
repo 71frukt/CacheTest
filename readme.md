@@ -2,6 +2,8 @@
 
 ## Сборка
 ```bash
+git clone --recurse-submodules git@github.com:71frukt/CashTest.git
+cd CashTest
 cmake -B build -S .
 cmake --build build
 ```
@@ -31,7 +33,7 @@ ctest --test-dir build -L Cash2Q
 
 ### Идеальный кеш
 ```bash
-build/cash_ideal_test
+ctest --test-dir build -L CashIdeal
 ```
 
 ## Сравнение и описание работы
