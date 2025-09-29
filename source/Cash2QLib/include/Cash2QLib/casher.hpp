@@ -34,9 +34,9 @@ private:
     PageList<PageT, KeyT> cashe_hot_;
     PageList<bool , KeyT> cashe_history_;
 
-    const size_t cashe_hot_capa_;
-    const size_t cashe_in_capa_;
-    const size_t cashe_history_capa_;
+    size_t cashe_hot_capa_;
+    size_t cashe_in_capa_;
+    size_t cashe_history_capa_;
 
     PageT GetPageCashedHot_   (const KeyT& key);
     PageT GetPageCashedIn_    (const KeyT& key);
@@ -61,7 +61,13 @@ Casher2Q<PageT, KeyT>::Casher2Q(size_t capacity, std::function<PageT(KeyT)> get_
     RLSU_INFO("cashe_hot_capa_ = {}, cashe_in_capa_ = {}, cashe_history_capa_ = {}", cashe_hot_capa_, cashe_in_capa_, cashe_history_capa_);
 
     if (capacity < 3)
-        RLSU_ERROR("capacity < 3! 2Q hash doesn't make sense.");
+    {
+        cashe_history_capa_ = 1;
+        cashe_in_capa_      = 0;
+        cashe_hot_capa_     = 1;
+
+        RLSU_WARNING("capacity < 3! 2Q hash doesn't make sense.");
+    }
 }
 
 
@@ -140,7 +146,7 @@ PageT Casher2Q<PageT, KeyT>::GetPageUncashed_(const KeyT& key)
     while (cashe_in_.Size() > cashe_in_capa_)
         ERROR_HANDLE(RemoveExtraPageToHistory_(cashe_in_));
 
-    return ERROR_HANDLE(cashe_in_.Get(key).page);
+    return page;
 }
 
 

@@ -3,7 +3,7 @@
 ## Сборка
 ```bash
 git clone --recurse-submodules git@github.com:71frukt/CacheTest.git
-cd CashTest
+cd CacheTest
 cmake -B build -S .
 cmake --build build
 ```
