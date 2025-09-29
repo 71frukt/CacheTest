@@ -89,7 +89,7 @@ PageT Casher2Q<PageT, KeyT>::GetPageCashedHot_(const KeyT& key)
 
     ERROR_HANDLE(cashe_hot_.MoveToFront(key));
 
-    return ERROR_HANDLE(cashe_hot_.Get(key).page);
+    return ERROR_HANDLE(cashe_hot_.Get(key)).page;
 }
 
 

@@ -7,8 +7,9 @@
 #include <functional>
 #include <vector>
 
-#include "Cash2QLib/casher.hpp"
-#include "RLogSU/logger.hpp"
+#include <unordered_map>
+#include <stack>
+
 #include "RLogSU/error_handler.hpp"
 #include "Cash2QLib/page_list.hpp"
 
@@ -18,7 +19,7 @@ template <typename PageT, typename KeyT = int>
 class CasherIdeal
 {
 public:
-    CasherIdeal(size_t capacity, std::function<PageT(KeyT)> get_uncashed_page, std::vector<KeyT>& accessed_keys);
+    CasherIdeal(size_t capacity, std::function<PageT(KeyT)> get_uncashed_page, const std::vector<KeyT>& accessed_keys);
 
     PageT GetPage(KeyT key);
 
@@ -28,100 +29,35 @@ private:
     const size_t capacity_;
     Cash2QLib::PageList<PageT, KeyT> cashe_;
 
-    struct AccessNum { KeyT key; size_t num = 0; };
-    std::vector<AccessNum> sorted_keys_access_nums_;
-
     const std::vector<KeyT>& accessed_keys_;
 
-    void  FillAndSortPageAccessNums_();
-    PageT CashPageIfFreq_(const KeyT& key);
+    std::unordered_map<KeyT, std::stack<size_t>> key_access_ids;
+    void FillKeyAcessIds_();
 
-    PageT& GetPageUncashed_ (const KeyT& key);
+    KeyT GetRarestCashedKey_();
+
+    PageT GetPageUncashed_ (const KeyT& key);
     std::function<PageT(KeyT)> UserGetPageUncashed_;
 };
 
 
 
 template <typename PageT, typename KeyT>
-CasherIdeal<PageT, KeyT>::CasherIdeal(size_t capacity, std::function<PageT(KeyT)> get_uncashed_page, std::vector<KeyT>& accessed_keys)
+CasherIdeal<PageT, KeyT>::CasherIdeal(size_t capacity, std::function<PageT(KeyT)> get_uncashed_page, const std::vector<KeyT>& accessed_keys)
     : capacity_(capacity)
     , accessed_keys_(accessed_keys)
     , UserGetPageUncashed_(get_uncashed_page)
 {
-    FillAndSortPageAccessNums_();
-}
-
-
-template <typename PageT, typename KeyT>
-void CasherIdeal<PageT, KeyT>::FillAndSortPageAccessNums_()
-{
-    RLSU_ASSERT(sorted_keys_access_nums_.size() == 0);
-
-    const size_t accessed_keys_size = accessed_keys_.size();
-    
-    for (size_t accessed_keys_i = 0; accessed_keys_i < accessed_keys_size; accessed_keys_i++)
-    {
-        const size_t sorted_keys_access_nums_size = sorted_keys_access_nums_.size();
-        
-        size_t sorted_keys_access_nums_i = 0;
-
-        for ( ; sorted_keys_access_nums_i < sorted_keys_access_nums_size; sorted_keys_access_nums_i++)
-        {
-            if (sorted_keys_access_nums_[sorted_keys_access_nums_i].key == accessed_keys_[accessed_keys_i])
-                break;
-        }
-
-        if (sorted_keys_access_nums_i == sorted_keys_access_nums_size)
-            sorted_keys_access_nums_.push_back({accessed_keys_[accessed_keys_i], 0});
-
-        sorted_keys_access_nums_[sorted_keys_access_nums_i].num++;
-    }
-
-    RLSU_INFO("sorted_keys_access_nums_ = ");
-    for (int i = 0;  i < sorted_keys_access_nums_.size(); i++)
-        RLSU_LOG("{} ", sorted_keys_access_nums_[i].key);
-
-    RLSU_LOG("\n");
-
-    std::sort(sorted_keys_access_nums_.begin(), sorted_keys_access_nums_.end(), 
-        [](const AccessNum& a, const AccessNum& b) 
-        { 
-            return a.num > b.num; 
-        } );
-}
-
-
-template <typename PageT, typename KeyT>
-PageT CasherIdeal<PageT, KeyT>::CashPageIfFreq_(const KeyT& key)
-{
-    const size_t sorted_keys_access_nums_size = sorted_keys_access_nums_.size();
-
-    size_t i = 0;
-
-    for ( ; i < capacity_ && i < sorted_keys_access_nums_size; i++)
-    {
-        if (sorted_keys_access_nums_[i].key == key)
-            break;
-    }
-
-    if (i != sorted_keys_access_nums_size && cashe_.Size() < capacity_)
-    {
-        PageT hot_page = UserGetPageUncashed_(key);
-
-        cashe_.PushBack(hot_page, key);
-        return cashe_.Back().page;
-    }
-
-    else
-    {
-        return UserGetPageUncashed_(key);
-    }    
+    ERROR_HANDLE(FillKeyAcessIds_());
 }
 
 
 template <typename PageT, typename KeyT>
 PageT CasherIdeal<PageT, KeyT>::GetPage(KeyT key)
 {
+    if (!key_access_ids[key].empty())
+        key_access_ids[key].pop();
+
     if (cashe_.Contains(key))
     {
         last_cashe_hitted = true;
@@ -132,8 +68,59 @@ PageT CasherIdeal<PageT, KeyT>::GetPage(KeyT key)
     {
         last_cashe_hitted = false;
 
-        return CashPageIfFreq_(key);
+        return ERROR_HANDLE(GetPageUncashed_(key));
     }
+}
+
+
+template <typename PageT, typename KeyT>
+void CasherIdeal<PageT, KeyT>::FillKeyAcessIds_()
+{
+    for (int i = accessed_keys_.size() - 1; i >= 0; i--)
+    {
+        key_access_ids[accessed_keys_[i]].push(i);
+    }
+}
+
+template <typename PageT, typename KeyT>
+PageT CasherIdeal<PageT, KeyT>::GetPageUncashed_(const KeyT& key)
+{
+    if (cashe_.Size() == capacity_)
+    {
+        KeyT deleting_from_cash_key = ERROR_HANDLE(GetRarestCashedKey_());
+        ERROR_HANDLE(cashe_.Erase(deleting_from_cash_key));
+    }
+
+    PageT cashed_page = UserGetPageUncashed_(key);
+    ERROR_HANDLE(cashe_.PushFront(cashed_page, key));
+
+    return cashed_page;
+}
+
+
+template <typename PageT, typename KeyT>
+KeyT CasherIdeal<PageT, KeyT>::GetRarestCashedKey_()
+{
+    RLSU_ASSERT(cashe_.Size() != 0);
+
+    KeyT rarest = cashe_.Front().key;
+    size_t max_dist_to_access = 0;
+
+    for (auto it = cashe_.Begin(); it != cashe_.End(); it++)
+    {
+        if (key_access_ids[it->key].empty())
+            return it->key;
+
+        size_t cur_key_dist_to_access = key_access_ids.at(it->key).top();
+
+        if (cur_key_dist_to_access > max_dist_to_access)
+        {
+            max_dist_to_access = cur_key_dist_to_access;
+            rarest = it->key;
+        }
+    }
+
+    return rarest;
 }
 
 }

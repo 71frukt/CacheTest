@@ -9,6 +9,7 @@ add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND}
     --output-on-failure
 )
 
+find_package(fmt REQUIRED)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 

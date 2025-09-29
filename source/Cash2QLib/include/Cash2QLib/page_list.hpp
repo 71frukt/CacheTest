@@ -19,6 +19,7 @@ public:
     using KeyPageListT = std::list<PageListElemT>;
 
     PageListElemT& Get(const KeyT& key);
+
     KeyPageListT::iterator& Iterator(const KeyT& key);
 
     void Erase       (const KeyT& key);
@@ -29,11 +30,11 @@ public:
     void PopBack ();
 
     
-    PageListElemT&         Front() { RLSU_ERROR("pornoo"); return list_.front(); }
+    PageListElemT&         Front() { return list_.front(); }
     PageListElemT&         Back () { return list_.back (); }
     KeyPageListT::iterator Begin() { return list_.begin(); }
     KeyPageListT::iterator End  () { return list_.end  (); }
-    
+        
     auto Size () { return list_.size(); }
     
     
@@ -41,7 +42,7 @@ public:
     void MoveToFront  (const KeyT& key);
     void MoveToBack   (const KeyT& key);
     void Splice       (const KeyPageListT::iterator& page_after_pos, PageList& page_list, const KeyT& cur_page_key);
-    
+
     bool Contains(const KeyT key);
 
 
