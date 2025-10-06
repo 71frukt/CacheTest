@@ -34,6 +34,7 @@ private:
     std::unordered_map<KeyT, std::stack<size_t>> key_access_ids;
     void FillKeyAcessIds_();
 
+    size_t GetPageNextAccessId(KeyT key);
     KeyT GetRarestCashedKey_();
 
     PageT GetPageUncashed_ (const KeyT& key);
@@ -88,6 +89,12 @@ PageT CasherIdeal<PageT, KeyT>::GetPageUncashed_(const KeyT& key)
     if (cashe_.Size() == capacity_)
     {
         KeyT deleting_from_cash_key = ERROR_HANDLE(GetRarestCashedKey_());
+
+        if (GetPageNextAccessId(deleting_from_cash_key) < GetPageNextAccessId(key))
+        {
+            return UserGetPageUncashed_(key);
+        }
+
         ERROR_HANDLE(cashe_.Erase(deleting_from_cash_key));
     }
 
@@ -121,6 +128,17 @@ KeyT CasherIdeal<PageT, KeyT>::GetRarestCashedKey_()
     }
 
     return rarest;
+}
+
+
+template <typename PageT, typename KeyT>
+size_t CasherIdeal<PageT, KeyT>::GetPageNextAccessId(KeyT key)
+{
+    if (key_access_ids.at(key).empty())
+        return size_t(-1);
+
+    else
+        return key_access_ids.at(key).top();
 }
 
 }
